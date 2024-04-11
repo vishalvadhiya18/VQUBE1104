@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login or Register</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form-box">
+
+            <!-- Login form -->
+            <div class="login-container" id="login">
+                <div class="top">
+                    <span>Don't have an account? <a href="#" onclick="register()">Sign Up</a></span>
+                    <header>Login</header>
+                </div>
+                <form action="/login" method="POST">
+                    <div class="input-box">
+                        <input type="email" class="input-field" placeholder="Email" name="email" required>
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" class="input-field" placeholder="Password" name="password" required>
+                        <i class="bx bx-lock-alt"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="submit" class="submit" value="Login">
+                    </div>
+                </form>
+            </div>
+
+            <!-- Registration form -->
+            <div class="register-container" id="register">
+                <div class="top">
+                    <span>Already have an account? <a href="#" onclick="login()">Login</a></span>
+                    <header>Sign Up</header>
+                </div>
+                <form action="/signup" method="POST" onsubmit="return validateForm()">
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="First Name" name="firstname" id="firstname" required>
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Last Name" name="lastname" id="lastname" required>
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="email" class="input-field" placeholder="Email" name="email" id="email" required>
+                        <i class="bx bx-envelope"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" class="input-field" placeholder="Password" name="password" id="password" required>
+                        <i class="bx bx-lock-alt"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="submit" class="submit" value="Register">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            var x = document.getElementById("login");
+            var y = document.getElementById("register");
+
+            x.style.left = "4px";
+            y.style.right = "-520px";
+        }
+
+        function register() {
+            var x = document.getElementById("login");
+            var y = document.getElementById("register");
+
+            x.style.left = "-510px";
+            y.style.right = "5px";
+        }
+
+        function validateForm() {
+            var firstname = document.getElementById('firstname').value;
+            var lastname = document.getElementById('lastname').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            if (firstname.trim() == '' || lastname.trim() == '' || email.trim() == '' || password.trim() == '') {
+                alert('All fields are required');
+                return false;
+            }
+
+            // Additional validation logic if needed
+
+            return true;
+        }
+    </script>
+</body>
+</html>
